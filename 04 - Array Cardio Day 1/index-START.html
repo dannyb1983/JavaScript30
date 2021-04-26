@@ -37,29 +37,61 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const years = inventors.filter(i=> i.year >= 1500 && i.year <1600)
+    // console.table(years)
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const firstLast = inventors.map(i=>i.first +' '+i.last)
+    // console.log(firstLast)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const birthdates = inventors.sort((a,b)=> a.year - b.year)
+    // console.log(birthdates) 
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+    const totalInventors = inventors.reduce((a,b)=> {
+      return a + (b.passed - b.year)
+    }, 0)
+    // console.log(totalInventors)
     // 5. Sort the inventors by years lived
+    const sorted = inventors.sort((a,b)=>{
+      let first = a.passed - a.year
+      let next = b.passed - b.year
+      
+      return first - next
+    })
+    // console.table(sorted)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // const category = document.querySelectorAll('.mw-category a')
+    // let categoryArray = Array.from(category)
+    // let arrayContent = categoryArray.map(el=>el.textContent)
+    // console.log(arrayContent.filter(el=>el.includes('de')))
+
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alpha = people.sort((a,b)=>{
+      let [alast,afirst] = a.split(',')
+      let [blast,bfirst] = b.split(',')
+
+      return alast > blast ? 1 : -1
+    })
+    // console.log(alpha)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const dataObj = data.reduce((obj,item)=> {
+     obj[item] =  (obj[item] || 0) + 1
+     return obj
+    },{})
+    // console.log(dataObj)
   </script>
 </body>
 </html>
