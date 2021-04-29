@@ -71,6 +71,7 @@
       const minHand = document.querySelector('.min-hand');
       function setDate() {
         const now = new Date();
+        console.log('hello the date is: ', now)
         const seconds = now.getSeconds();
         const secondsDegs = (seconds / 60) * 360 + 90;
         secondHand.style.transform = `rotate(${secondsDegs}deg)`;
